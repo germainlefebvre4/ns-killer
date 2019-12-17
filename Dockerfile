@@ -1,10 +1,6 @@
 FROM python:3-alpine
 
-ARG KUBECTL_VERSION=1.13.11
-ENV PYTHON_LOOP_FREQUENCY=10
-ENV NS_PATTERN=".*"
-ENV NS_RENTENTION_KIND="hours"
-ENV NS_RENTENTION_TIME="1"
+ARG KUBECTL_VERSION=1.14.10
 
 RUN apk update && apk add curl && \
     curl -Lo /usr/bin/kubectl https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl && \
@@ -14,5 +10,5 @@ RUN apk update && apk add curl && \
 WORKDIR /usr/src/app
 COPY . .
 RUN pip install -r requirements.txt
-ENTRYPOINT [ "python", "./main.py" ]
+CMD [ "python", "./main.py" ]
 
