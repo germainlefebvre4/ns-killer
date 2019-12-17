@@ -7,11 +7,17 @@ data:
   ns-killer.conf: |
     config:
       retention:
-        kind: hours
+        kind: minutes
         time: 1
     namespace:
       include:
         - test
       exclude:
         - kube-system
-                  
+        - kube-public
+        - default
+        - ingress-nginx
+        - cert-manager
+        - cattle-system
+        - prometheus
+        - jenkins

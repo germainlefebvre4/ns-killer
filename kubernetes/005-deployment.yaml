@@ -19,11 +19,12 @@ spec:
       labels:
         app.kubernetes.io/name: ns-killer
         app.kubernetes.io/ns-killer: ns-killer
+        configHash: 7e7da7e6ecef6094800ef49f5b84548eef5fa90bbfea3f194d67932087b3
     spec:
       serviceAccountName: ns-killer
       containers:
         - name: ns-killer
-          image: "germainlefebvre4/ns-killer"
+          image: "germainlefebvre4/ns-killer:feat-config"
           #image: "eu.gcr.io/core-prof-social-pf-dsip/alpine:latest"
           imagePullPolicy: Always
           stdin: true
