@@ -13,5 +13,6 @@ RUN apk update && apk add curl && \
 
 WORKDIR /usr/src/app
 COPY . .
+RUN pip install -r requirements.txt
 ENTRYPOINT [ "python", "./main.py" ]
 
