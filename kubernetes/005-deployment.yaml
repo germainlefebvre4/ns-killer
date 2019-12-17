@@ -23,7 +23,7 @@ spec:
       serviceAccountName: ns-killer
       containers:
         - name: ns-killer
-          image: "germainlefebvre4/k8s_ns-killer"
+          image: "germainlefebvre4/ns-killer"
           #image: "eu.gcr.io/core-prof-social-pf-dsip/alpine:latest"
           imagePullPolicy: Always
           stdin: true
@@ -39,3 +39,10 @@ spec:
             requests:
               cpu: 10m
               memory: 16Mi
+          volumeMounts:
+            - name: config
+              mountPath: /etc/config
+      volumes:
+        - name: config
+          configMap:
+            name: ns-killer

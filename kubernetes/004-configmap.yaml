@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ns-killer
+  namespace: ns-killer
+data:
+  ns-killer.conf: |
+    config:
+      retention:
+        kind: hours
+        time: 1
+    namespace:
+      include:
+        - test
+      exclude:
+        - kube-system
+                  
