@@ -1,0 +1,509 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "v1",
+            "kind": "Namespace",
+            "metadata": {
+                "annotations": {
+                    "cattle.io/status": "{\"Conditions\":[{\"Type\":\"ResourceQuotaInit\",\"Status\":\"True\",\"Message\":\"\",\"LastUpdateTime\":\"2019-09-19T16:34:19Z\"},{\"Type\":\"InitialRolesPopulated\",\"Status\":\"True\",\"Message\":\"\",\"LastUpdateTime\":\"2019-09-19T16:34:24Z\"}]}",
+                    "field.cattle.io/projectId": "c-bh2lg:p-r5n2f",
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"Namespace\",\"metadata\":{\"annotations\":{},\"name\":\"cattle-system\"}}\n",
+                    "lifecycle.cattle.io/create.namespace-auth": "true"
+                },
+                "creationTimestamp": "2019-09-19T15:24:27Z",
+                "finalizers": [
+                    "controller.cattle.io/namespace-auth"
+                ],
+                "labels": {
+                    "field.cattle.io/projectId": "p-r5n2f"
+                },
+                "name": "cattle-system",
+                "resourceVersion": "1725981",
+                "selfLink": "/api/v1/namespaces/cattle-system",
+                "uid": "9162e187-daf1-11e9-9b8b-42010a840005"
+            },
+            "spec": {
+                "finalizers": [
+                    "kubernetes"
+                ]
+            },
+            "status": {
+                "phase": "Active"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Namespace",
+            "metadata": {
+                "annotations": {
+                    "cattle.io/status": "{\"Conditions\":[{\"Type\":\"ResourceQuotaInit\",\"Status\":\"True\",\"Message\":\"\",\"LastUpdateTime\":\"2019-10-01T05:40:34Z\"},{\"Type\":\"InitialRolesPopulated\",\"Status\":\"True\",\"Message\":\"\",\"LastUpdateTime\":\"2019-10-01T05:40:34Z\"}]}",
+                    "lifecycle.cattle.io/create.namespace-auth": "true"
+                },
+                "creationTimestamp": "2019-10-01T05:40:33Z",
+                "finalizers": [
+                    "controller.cattle.io/namespace-auth"
+                ],
+                "labels": {
+                    "certmanager.k8s.io/disable-validation": "true"
+                },
+                "name": "cert-manager",
+                "resourceVersion": "4522592",
+                "selfLink": "/api/v1/namespaces/cert-manager",
+                "uid": "fc9d27cb-e40d-11e9-bdb3-42010a84010b"
+            },
+            "spec": {
+                "finalizers": [
+                    "kubernetes"
+                ]
+            },
+            "status": {
+                "phase": "Active"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Namespace",
+            "metadata": {
+                "annotations": {
+                    "cattle.io/status": "{\"Conditions\":[{\"Type\":\"ResourceQuotaInit\",\"Status\":\"True\",\"Message\":\"\",\"LastUpdateTime\":\"2019-10-22T16:09:02Z\"},{\"Type\":\"InitialRolesPopulated\",\"Status\":\"True\",\"Message\":\"\",\"LastUpdateTime\":\"2019-10-22T16:09:02Z\"}]}",
+                    "lifecycle.cattle.io/create.namespace-auth": "true"
+                },
+                "creationTimestamp": "2019-10-22T16:09:01Z",
+                "finalizers": [
+                    "controller.cattle.io/namespace-auth"
+                ],
+                "labels": {
+                    "name": "chore-add-env-variables"
+                },
+                "name": "chore-add-env-variables",
+                "resourceVersion": "11582509",
+                "selfLink": "/api/v1/namespaces/chore-add-env-variables",
+                "uid": "42df5d10-f4e6-11e9-b439-42010a840110"
+            },
+            "spec": {
+                "finalizers": [
+                    "kubernetes"
+                ]
+            },
+            "status": {
+                "phase": "Active"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Namespace",
+            "metadata": {
+                "annotations": {
+                    "cattle.io/status": "{\"Conditions\":[{\"Type\":\"ResourceQuotaInit\",\"Status\":\"True\",\"Message\":\"\",\"LastUpdateTime\":\"2019-10-22T07:44:16Z\"},{\"Type\":\"InitialRolesPopulated\",\"Status\":\"True\",\"Message\":\"\",\"LastUpdateTime\":\"2019-10-22T07:44:16Z\"}]}",
+                    "lifecycle.cattle.io/create.namespace-auth": "true"
+                },
+                "creationTimestamp": "2019-10-22T07:44:15Z",
+                "finalizers": [
+                    "controller.cattle.io/namespace-auth"
+                ],
+                "labels": {
+                    "name": "chore-fix-pwa-configuration"
+                },
+                "name": "chore-fix-pwa-configuration",
+                "resourceVersion": "11468475",
+                "selfLink": "/api/v1/namespaces/chore-fix-pwa-configuration",
+                "uid": "bf06356f-f49f-11e9-b439-42010a840110"
+            },
+            "spec": {
+                "finalizers": [
+                    "kubernetes"
+                ]
+            },
+            "status": {
+                "phase": "Active"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Namespace",
+            "metadata": {
+                "annotations": {
+                    "cattle.io/status": "{\"Conditions\":[{\"Type\":\"ResourceQuotaInit\",\"Status\":\"True\",\"Message\":\"\",\"LastUpdateTime\":\"2019-10-22T06:44:51Z\"},{\"Type\":\"InitialRolesPopulated\",\"Status\":\"True\",\"Message\":\"\",\"LastUpdateTime\":\"2019-10-22T06:44:51Z\"}]}",
+                    "lifecycle.cattle.io/create.namespace-auth": "true"
+                },
+                "creationTimestamp": "2019-10-22T06:44:50Z",
+                "finalizers": [
+                    "controller.cattle.io/namespace-auth"
+                ],
+                "labels": {
+                    "name": "chore-gitlab-deploy"
+                },
+                "name": "chore-gitlab-deploy",
+                "resourceVersion": "11451208",
+                "selfLink": "/api/v1/namespaces/chore-gitlab-deploy",
+                "uid": "722f6001-f497-11e9-b439-42010a840110"
+            },
+            "spec": {
+                "finalizers": [
+                    "kubernetes"
+                ]
+            },
+            "status": {
+                "phase": "Active"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Namespace",
+            "metadata": {
+                "annotations": {
+                    "cattle.io/status": "{\"Conditions\":[{\"Type\":\"ResourceQuotaInit\",\"Status\":\"True\",\"Message\":\"\",\"LastUpdateTime\":\"2019-10-23T09:48:23Z\"},{\"Type\":\"InitialRolesPopulated\",\"Status\":\"True\",\"Message\":\"\",\"LastUpdateTime\":\"2019-10-23T09:48:23Z\"}]}",
+                    "lifecycle.cattle.io/create.namespace-auth": "true"
+                },
+                "creationTimestamp": "2019-10-23T09:48:22Z",
+                "finalizers": [
+                    "controller.cattle.io/namespace-auth"
+                ],
+                "labels": {
+                    "name": "chore-performances"
+                },
+                "name": "chore-performances",
+                "resourceVersion": "11810202",
+                "selfLink": "/api/v1/namespaces/chore-performances",
+                "uid": "4044a815-f57a-11e9-bdb2-42010a840140"
+            },
+            "spec": {
+                "finalizers": [
+                    "kubernetes"
+                ]
+            },
+            "status": {
+                "phase": "Active"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Namespace",
+            "metadata": {
+                "annotations": {
+                    "cattle.io/status": "{\"Conditions\":[{\"Type\":\"ResourceQuotaInit\",\"Status\":\"True\",\"Message\":\"\",\"LastUpdateTime\":\"2019-09-12T14:29:05Z\"}]}",
+                    "field.cattle.io/projectId": "c-bh2lg:p-4dlvm",
+                    "lifecycle.cattle.io/create.namespace-auth": "true"
+                },
+                "creationTimestamp": "2019-09-12T12:11:19Z",
+                "finalizers": [
+                    "controller.cattle.io/namespace-auth"
+                ],
+                "labels": {
+                    "field.cattle.io/projectId": "p-4dlvm"
+                },
+                "name": "default",
+                "resourceVersion": "1726887",
+                "selfLink": "/api/v1/namespaces/default",
+                "uid": "6dcdb1da-d556-11e9-b907-42010a840094"
+            },
+            "spec": {
+                "finalizers": [
+                    "kubernetes"
+                ]
+            },
+            "status": {
+                "phase": "Active"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Namespace",
+            "metadata": {
+                "annotations": {
+                    "cattle.io/status": "{\"Conditions\":[{\"Type\":\"ResourceQuotaInit\",\"Status\":\"True\",\"Message\":\"\",\"LastUpdateTime\":\"2019-10-22T15:26:09Z\"},{\"Type\":\"InitialRolesPopulated\",\"Status\":\"True\",\"Message\":\"\",\"LastUpdateTime\":\"2019-10-22T15:26:09Z\"}]}",
+                    "lifecycle.cattle.io/create.namespace-auth": "true"
+                },
+                "creationTimestamp": "2019-10-22T15:26:08Z",
+                "finalizers": [
+                    "controller.cattle.io/namespace-auth"
+                ],
+                "labels": {
+                    "name": "feat-319-visualization-pdf"
+                },
+                "name": "feat-319-visualization-pdf",
+                "resourceVersion": "11572678",
+                "selfLink": "/api/v1/namespaces/feat-319-visualization-pdf",
+                "uid": "45775c74-f4e0-11e9-b439-42010a840110"
+            },
+            "spec": {
+                "finalizers": [
+                    "kubernetes"
+                ]
+            },
+            "status": {
+                "phase": "Active"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Namespace",
+            "metadata": {
+                "annotations": {
+                    "cattle.io/status": "{\"Conditions\":[{\"Type\":\"ResourceQuotaInit\",\"Status\":\"True\",\"Message\":\"\",\"LastUpdateTime\":\"2019-10-22T14:03:03Z\"},{\"Type\":\"InitialRolesPopulated\",\"Status\":\"True\",\"Message\":\"\",\"LastUpdateTime\":\"2019-10-22T14:03:03Z\"}]}",
+                    "lifecycle.cattle.io/create.namespace-auth": "true"
+                },
+                "creationTimestamp": "2019-10-22T14:03:02Z",
+                "finalizers": [
+                    "controller.cattle.io/namespace-auth"
+                ],
+                "labels": {
+                    "name": "feat-337-fix-routes"
+                },
+                "name": "feat-337-fix-routes",
+                "resourceVersion": "11554346",
+                "selfLink": "/api/v1/namespaces/feat-337-fix-routes",
+                "uid": "a96edbb9-f4d4-11e9-b439-42010a840110"
+            },
+            "spec": {
+                "finalizers": [
+                    "kubernetes"
+                ]
+            },
+            "status": {
+                "phase": "Active"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Namespace",
+            "metadata": {
+                "annotations": {
+                    "cattle.io/status": "{\"Conditions\":[{\"Type\":\"ResourceQuotaInit\",\"Status\":\"True\",\"Message\":\"\",\"LastUpdateTime\":\"2019-10-22T15:41:22Z\"},{\"Type\":\"InitialRolesPopulated\",\"Status\":\"True\",\"Message\":\"\",\"LastUpdateTime\":\"2019-10-22T15:41:22Z\"}]}",
+                    "lifecycle.cattle.io/create.namespace-auth": "true"
+                },
+                "creationTimestamp": "2019-10-22T15:41:21Z",
+                "finalizers": [
+                    "controller.cattle.io/namespace-auth"
+                ],
+                "labels": {
+                    "name": "feat-341-affiliat-contact-to-project"
+                },
+                "name": "feat-341-affiliat-contact-to-project",
+                "resourceVersion": "11576258",
+                "selfLink": "/api/v1/namespaces/feat-341-affiliat-contact-to-project",
+                "uid": "65691ee2-f4e2-11e9-b439-42010a840110"
+            },
+            "spec": {
+                "finalizers": [
+                    "kubernetes"
+                ]
+            },
+            "status": {
+                "phase": "Active"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Namespace",
+            "metadata": {
+                "annotations": {
+                    "cattle.io/status": "{\"Conditions\":[{\"Type\":\"ResourceQuotaInit\",\"Status\":\"True\",\"Message\":\"\",\"LastUpdateTime\":\"2019-10-22T13:14:12Z\"},{\"Type\":\"InitialRolesPopulated\",\"Status\":\"True\",\"Message\":\"\",\"LastUpdateTime\":\"2019-10-22T13:14:12Z\"}]}",
+                    "lifecycle.cattle.io/create.namespace-auth": "true"
+                },
+                "creationTimestamp": "2019-10-22T13:14:11Z",
+                "finalizers": [
+                    "controller.cattle.io/namespace-auth"
+                ],
+                "labels": {
+                    "name": "feat-402-profile-page"
+                },
+                "name": "feat-402-profile-page",
+                "resourceVersion": "11543499",
+                "selfLink": "/api/v1/namespaces/feat-402-profile-page",
+                "uid": "d651084f-f4cd-11e9-b439-42010a840110"
+            },
+            "spec": {
+                "finalizers": [
+                    "kubernetes"
+                ]
+            },
+            "status": {
+                "phase": "Active"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Namespace",
+            "metadata": {
+                "annotations": {
+                    "cattle.io/status": "{\"Conditions\":[{\"Type\":\"ResourceQuotaInit\",\"Status\":\"True\",\"Message\":\"\",\"LastUpdateTime\":\"2019-10-22T12:42:30Z\"},{\"Type\":\"InitialRolesPopulated\",\"Status\":\"True\",\"Message\":\"\",\"LastUpdateTime\":\"2019-10-22T12:42:30Z\"}]}",
+                    "lifecycle.cattle.io/create.namespace-auth": "true"
+                },
+                "creationTimestamp": "2019-10-22T12:42:29Z",
+                "finalizers": [
+                    "controller.cattle.io/namespace-auth"
+                ],
+                "labels": {
+                    "name": "fix-fix-check-contact-and-works"
+                },
+                "name": "fix-fix-check-contact-and-works",
+                "resourceVersion": "11536350",
+                "selfLink": "/api/v1/namespaces/fix-fix-check-contact-and-works",
+                "uid": "68a7d65d-f4c9-11e9-b439-42010a840110"
+            },
+            "spec": {
+                "finalizers": [
+                    "kubernetes"
+                ]
+            },
+            "status": {
+                "phase": "Active"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Namespace",
+            "metadata": {
+                "annotations": {
+                    "cattle.io/status": "{\"Conditions\":[{\"Type\":\"ResourceQuotaInit\",\"Status\":\"True\",\"Message\":\"\",\"LastUpdateTime\":\"2019-09-12T14:29:05Z\"},{\"Type\":\"InitialRolesPopulated\",\"Status\":\"True\",\"Message\":\"\",\"LastUpdateTime\":\"2019-09-12T14:29:05Z\"}]}",
+                    "field.cattle.io/projectId": "c-bh2lg:p-v4jcr",
+                    "lifecycle.cattle.io/create.namespace-auth": "true"
+                },
+                "creationTimestamp": "2019-09-12T12:19:38Z",
+                "finalizers": [
+                    "controller.cattle.io/namespace-auth"
+                ],
+                "labels": {
+                    "certmanager.k8s.io/disable-validation": "true",
+                    "field.cattle.io/projectId": "p-v4jcr"
+                },
+                "name": "gitlab-managed-apps",
+                "resourceVersion": "1726858",
+                "selfLink": "/api/v1/namespaces/gitlab-managed-apps",
+                "uid": "973f084c-d557-11e9-b907-42010a840094"
+            },
+            "spec": {
+                "finalizers": [
+                    "kubernetes"
+                ]
+            },
+            "status": {
+                "phase": "Active"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Namespace",
+            "metadata": {
+                "annotations": {
+                    "cattle.io/status": "{\"Conditions\":[{\"Type\":\"ResourceQuotaInit\",\"Status\":\"True\",\"Message\":\"\",\"LastUpdateTime\":\"2019-09-12T14:29:05Z\"},{\"Type\":\"InitialRolesPopulated\",\"Status\":\"True\",\"Message\":\"\",\"LastUpdateTime\":\"2019-09-12T14:29:07Z\"}]}",
+                    "field.cattle.io/projectId": "c-bh2lg:p-r5n2f",
+                    "lifecycle.cattle.io/create.namespace-auth": "true"
+                },
+                "creationTimestamp": "2019-09-12T12:11:19Z",
+                "finalizers": [
+                    "controller.cattle.io/namespace-auth"
+                ],
+                "labels": {
+                    "field.cattle.io/projectId": "p-r5n2f"
+                },
+                "name": "kube-public",
+                "resourceVersion": "1726504",
+                "selfLink": "/api/v1/namespaces/kube-public",
+                "uid": "6dd713c8-d556-11e9-b907-42010a840094"
+            },
+            "spec": {
+                "finalizers": [
+                    "kubernetes"
+                ]
+            },
+            "status": {
+                "phase": "Active"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Namespace",
+            "metadata": {
+                "annotations": {
+                    "cattle.io/status": "{\"Conditions\":[{\"Type\":\"ResourceQuotaInit\",\"Status\":\"True\",\"Message\":\"\",\"LastUpdateTime\":\"2019-09-12T14:29:05Z\"}]}",
+                    "field.cattle.io/projectId": "c-bh2lg:p-r5n2f",
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"Namespace\",\"metadata\":{\"annotations\":{},\"name\":\"kube-system\",\"namespace\":\"\"}}\n",
+                    "lifecycle.cattle.io/create.namespace-auth": "true"
+                },
+                "creationTimestamp": "2019-09-12T12:11:19Z",
+                "finalizers": [
+                    "controller.cattle.io/namespace-auth"
+                ],
+                "labels": {
+                    "field.cattle.io/projectId": "p-r5n2f"
+                },
+                "name": "kube-system",
+                "resourceVersion": "1726556",
+                "selfLink": "/api/v1/namespaces/kube-system",
+                "uid": "6dd5f04d-d556-11e9-b907-42010a840094"
+            },
+            "spec": {
+                "finalizers": [
+                    "kubernetes"
+                ]
+            },
+            "status": {
+                "phase": "Active"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Namespace",
+            "metadata": {
+                "annotations": {
+                    "cattle.io/status": "{\"Conditions\":[{\"Type\":\"ResourceQuotaInit\",\"Status\":\"True\",\"Message\":\"\",\"LastUpdateTime\":\"2019-10-18T10:39:39Z\"},{\"Type\":\"InitialRolesPopulated\",\"Status\":\"True\",\"Message\":\"\",\"LastUpdateTime\":\"2019-10-18T10:39:39Z\"}]}",
+                    "lifecycle.cattle.io/create.namespace-auth": "true"
+                },
+                "creationTimestamp": "2019-10-18T10:39:38Z",
+                "finalizers": [
+                    "controller.cattle.io/namespace-auth"
+                ],
+                "labels": {
+                    "name": "test"
+                },
+                "name": "test",
+                "resourceVersion": "10169921",
+                "selfLink": "/api/v1/namespaces/test",
+                "uid": "95657c63-f193-11e9-b439-42010a840110"
+            },
+            "spec": {
+                "finalizers": [
+                    "kubernetes"
+                ]
+            },
+            "status": {
+                "phase": "Active"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Namespace",
+            "metadata": {
+                "annotations": {
+                    "cattle.io/status": "{\"Conditions\":[{\"Type\":\"ResourceQuotaInit\",\"Status\":\"True\",\"Message\":\"\",\"LastUpdateTime\":\"2019-10-23T08:41:37Z\"},{\"Type\":\"InitialRolesPopulated\",\"Status\":\"True\",\"Message\":\"\",\"LastUpdateTime\":\"2019-10-23T08:41:37Z\"}]}",
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"Namespace\",\"metadata\":{\"annotations\":{},\"name\":\"watchtower\"}}\n",
+                    "lifecycle.cattle.io/create.namespace-auth": "true"
+                },
+                "creationTimestamp": "2019-10-23T08:41:36Z",
+                "finalizers": [
+                    "controller.cattle.io/namespace-auth"
+                ],
+                "name": "watchtower",
+                "resourceVersion": "11798451",
+                "selfLink": "/api/v1/namespaces/watchtower",
+                "uid": "ecbaec47-f570-11e9-bdb2-42010a840140"
+            },
+            "spec": {
+                "finalizers": [
+                    "kubernetes"
+                ]
+            },
+            "status": {
+                "phase": "Active"
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": "",
+        "selfLink": ""
+    }
+}
