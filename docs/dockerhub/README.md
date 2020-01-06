@@ -15,13 +15,13 @@ the Docker Community Forums, the Docker Community Slack, or Stack Overflow
 amd64
 
 * **Published image artifact details:**
-repo-info repo's repos/k8s_ns-killer/ directory (history)
+[docs repo's artifacts/ directory (history)](https://github.com/germainlefebvre4/ns-killer/blob/master/docs/artifacts)
 (image metadata, transfer size, etc)
 
 * **Image updates:**
 
 * **Source of this description:**
-docs repo's docs/ directory (history)
+[docs repo's dockerhub/ directory (history)](https://github.com/germainlefebvre4/ns-killer/blob/master/docs/dockerhub/README.md)
 
 # What is NS Killer?
 A Kubernetes project to kill all namespace living over X times. Quite useful when auto-generated development environments on the fly and give them a lifecycle out-of-the-box from Kubernetes or even Helm.
