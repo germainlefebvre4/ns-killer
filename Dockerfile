@@ -6,13 +6,6 @@ ENV PYTHONUSERBASE $PYROOT
 
 FROM base as builder
 
-ARG KUBECTL_VERSION=1.14.10
-
-RUN apk update && apk add curl && \
-    curl -Lo /usr/bin/kubectl https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl && \
-    chmod +x /usr/bin/kubectl && \
-    apk del curl
-
 RUN apt update && \
     apt install -y python-pip && \
     apt -y clean && \
@@ -24,6 +17,13 @@ RUN PIP_USER=1 PIP_IGNORE_INSTALLED=1 pipenv install --system --deploy --ignore-
 
 
 FROM base
+
+ARG KUBECTL_VERSION=1.14.10
+
+# Kubectl
+RUN apt update && apt install install -y curl && \
+    curl -Lo /usr/bin/kubectl https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl && \
+    chmod +x /usr/bin/kubectl
 
 # Python libs and sources
 COPY --from=builder $PYROOT/lib/ $PYROOT/lib/
