@@ -27,6 +27,6 @@ RUN apt update && apt install -y curl && \
 
 # Python libs and sources
 COPY --from=builder $PYROOT/lib/ $PYROOT/lib/
-COPY rentalcar-requests.py .
+COPY main.py .
 
 CMD ["python", "main.py"]
