@@ -21,7 +21,7 @@ FROM base
 ARG KUBECTL_VERSION=1.14.10
 
 # Kubectl
-RUN apt update && apt install install -y curl && \
+RUN apt update && apt install -y curl && \
     curl -Lo /usr/bin/kubectl https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl && \
     chmod +x /usr/bin/kubectl
 
