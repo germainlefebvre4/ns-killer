@@ -17,7 +17,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --build-arg KUBECTL_VERSION=$((matrix.kubectl_version)) --tag germainlefebvre4/ns-killer:latest
+      run: docker build . --file Dockerfile --build-arg KUBECTL_VERSION=${{ matrix.kubectl_version }} --tag germainlefebvre4/ns-killer:latest
     - name: Test run container - Run python script
       run: docker run --rm germainlefebvre4/ns-killer:latest
     - name: Publish to Docker Repository
