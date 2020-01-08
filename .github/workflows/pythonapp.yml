@@ -22,6 +22,6 @@ jobs:
     - name: Publish to Docker Repository
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
-        name: germainlefebvre4/ns-killer:latest
+        name: germainlefebvre4/ns-killer:v${{ matrix.kubectl_version }}
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_PASSWORD }}
