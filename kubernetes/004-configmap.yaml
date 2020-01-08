@@ -7,11 +7,9 @@ data:
   ns-killer.conf: |
     config:
       retention:
-        kind: minutes
-        time: 1
+        kind: hours
+        time: 2
     namespace:
-      include:
-        - test
       exclude:
         - kube-system
         - kube-public
@@ -21,3 +19,5 @@ data:
         - cattle-system
         - prometheus
         - jenkins
+      #only:
+      #  - trash

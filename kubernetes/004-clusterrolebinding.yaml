@@ -4,10 +4,10 @@ metadata:
   name: ns-killer
   namespace: ns-killer
 subjects:
-- kind: ServiceAccount
-  name: ns-killer
-  namespace: ns-killer
+  - kind: ServiceAccount
+    name: ns-killer
+    namespace: ns-killer
 roleRef:
   kind: ClusterRole
-  name: cluster-admin
+  name: ns-killer
   apiGroup: rbac.authorization.k8s.io

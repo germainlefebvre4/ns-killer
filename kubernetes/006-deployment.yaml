@@ -1,0 +1,43 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: ns-killer
+  namespace: ns-killer
+spec:
+  schedule: "*/1 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          labels:
+            app.kubernetes.io/name: ns-killer
+            app.kubernetes.io/ns-killer: ns-killer
+            configHash: 7e7da7e6ecef6094800ef49f5b84548eef5fa90bbfea3f194d67932087b3
+        spec:
+          serviceAccountName: ns-killer
+          restartPolicy: OnFailure
+          containers:
+            - name: ns-killer
+              image: "germainlefebvre4/ns-killer:feat-config"
+              #image: "eu.gcr.io/core-prof-social-pf-dsip/alpine:latest"
+              imagePullPolicy: Always
+              stdin: true
+              tty: true
+              env:
+                - name: NS_PATTERN
+                  value: ".*"
+                - name: NS_RETENTION_KIND
+                  value: "hours"
+                - name: NS_RETENTION_TIME
+                  value: "1"
+              resources:
+                requests:
+                  cpu: 10m
+                  memory: 16Mi
+              volumeMounts:
+                - name: config
+                  mountPath: /etc/config
+          volumes:
+            - name: config
+              configMap:
+                name: ns-killer
