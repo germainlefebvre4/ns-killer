@@ -11,15 +11,14 @@ jobs:
     strategy:
       matrix:
         kubectl_version:
-          - 1.13.11
+          - 1.16.4
+          - 1.15.7
           - 1.14.10
-          - 1.15.2
+          - 1.13.13
     steps:
     - uses: actions/checkout@v1
     - name: Build the Docker image
       run: docker build . --file Dockerfile --build-arg KUBECTL_VERSION=${{ matrix.kubectl_version }} --tag germainlefebvre4/ns-killer:latest
-    - name: Test run container - Run python script
-      run: docker run --rm germainlefebvre4/ns-killer:latest
     - name: Publish to Docker Repository
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
