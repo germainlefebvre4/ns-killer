@@ -1,12 +1,5 @@
 name: Python application
 
-strategy:
-  matrix:
-    kubectl_version:
-      - 1.13.11
-      - 1.14.10
-      - 1.15.2
-
 on:
   push:
     branches:
@@ -15,6 +8,12 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        kubectl_version:
+          - 1.13.11
+          - 1.14.10
+          - 1.15.2
     steps:
     - uses: actions/checkout@v1
     - name: Build the Docker image
