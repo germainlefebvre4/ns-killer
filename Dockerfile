@@ -1,4 +1,10 @@
-FROM python:3-alpine
+FROM python:3.7-slim-stretch AS base
+
+ENV PYROOT /pyroot
+ENV PYTHONUSERBASE $PYROOT
+
+
+FROM base as builder
 
 ARG KUBECTL_VERSION=1.14.10
 
@@ -7,8 +13,20 @@ RUN apk update && apk add curl && \
     chmod +x /usr/bin/kubectl && \
     apk del curl
 
-WORKDIR /usr/src/app
-COPY . .
-RUN pip install -r requirements.txt
-CMD [ "python", "./main.py" ]
+RUN apt update && \
+    apt install -y python-pip && \
+    apt -y clean && \
+    pip install pipenv
 
+# Update pipenv libs
+COPY Pipfile* ./
+RUN PIP_USER=1 PIP_IGNORE_INSTALLED=1 pipenv install --system --deploy --ignore-pipfile
+
+
+FROM base
+
+# Python libs and sources
+COPY --from=builder $PYROOT/lib/ $PYROOT/lib/
+COPY rentalcar-requests.py .
+
+CMD ["python", "main.py"]
