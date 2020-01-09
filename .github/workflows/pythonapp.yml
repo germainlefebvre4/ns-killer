@@ -1,25 +1,27 @@
 name: Python application
 
-on: [push]
-
-#strategy:
-#  matrix:
-#    kubectl:
-#      - 1.13.11
-#      - 1.14.8
-
+on:
+  push:
+    branches:
+    - master
+    - feat/*
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
+    strategy:
+      matrix:
+        kubectl_version:
+          - 1.16.4
+          - 1.15.7
+          - 1.14.10
+          - 1.13.13
     steps:
     - uses: actions/checkout@v1
-    - name: Set up Python 3.7
-      uses: actions/setup-python@v1
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --build-arg KUBECTL_VERSION=${{ matrix.kubectl_version }} --tag germainlefebvre4/ns-killer:v${{ matrix.kubectl_version }}
+    - name: Publish to Docker Repository
+      uses: elgohr/Publish-Docker-Github-Action@master
       with:
-        python-version: 3.7
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
+        name: germainlefebvre4/ns-killer:v${{ matrix.kubectl_version }}
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_PASSWORD }}

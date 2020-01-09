@@ -1,17 +1,32 @@
-FROM python:3-alpine
+FROM python:3.7-slim-stretch AS base
 
-ARG KUBECTL_VERSION=1.13.11
-ENV PYTHON_LOOP_FREQUENCY=10
-ENV NS_PATTERN=".*"
-ENV NS_RENTENTION_KIND="hours"
-ENV NS_RENTENTION_TIME="1"
+ENV PYROOT /pyroot
+ENV PYTHONUSERBASE $PYROOT
 
-RUN apk update && apk add curl && \
+
+FROM base as builder
+
+RUN apt update && \
+    apt install -y python-pip && \
+    apt -y clean && \
+    pip install pipenv
+
+# Update pipenv libs
+COPY Pipfile* ./
+RUN PIP_USER=1 PIP_IGNORE_INSTALLED=1 pipenv install --system --deploy --ignore-pipfile
+
+
+FROM base
+
+ARG KUBECTL_VERSION=1.14.10
+
+# Kubectl
+RUN apt update && apt install -y curl && \
     curl -Lo /usr/bin/kubectl https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl && \
-    chmod +x /usr/bin/kubectl && \
-    apk del curl
+    chmod +x /usr/bin/kubectl
 
-WORKDIR /usr/src/app
-COPY . .
-ENTRYPOINT [ "python", "./main.py" ]
+# Python libs and sources
+COPY --from=builder $PYROOT/lib/ $PYROOT/lib/
+COPY main.py .
 
+CMD ["python", "main.py"]

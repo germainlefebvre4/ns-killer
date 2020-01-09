@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ns-killer
+  namespace: ns-killer
+data:
+  ns-killer.conf: |
+    config:
+      retention:
+        kind: hours
+        time: 2
+    namespace:
+      exclude:
+        - kube-system
+        - kube-public
+        - default
+        - ingress-nginx
+        - cert-manager
+        - cattle-system
+        - prometheus
+        - jenkins
+      #only:
+      #  - trash
