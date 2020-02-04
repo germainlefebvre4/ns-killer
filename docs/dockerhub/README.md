@@ -35,6 +35,7 @@ $ docker run -ti -d --name=ns-killer germainlefebvre4/ns-killer
 The container has no parameters. Configuration is provided by a file at `/etc/config/ns-killer`.
 
 Configuration file is structured as following:
+
 | Attribute | Description | Values | Default | Implemented? |
 |---|---|---|---|---|
 | config.retention.kind | Time unit for the frequency loop | (string) minutes, hours, days, weeks, months | - | Yes |
