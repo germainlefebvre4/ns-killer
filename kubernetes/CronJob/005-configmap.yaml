@@ -11,13 +11,20 @@ data:
         time: 2
     namespace:
       exclude:
+        - ns-killer
         - kube-system
         - kube-public
+        - kube-node-lease
         - default
         - ingress-nginx
         - cert-manager
+        - gitlab-managed-apps
         - cattle-system
+        - monitoring
         - prometheus
         - jenkins
-      #only:
-      #  - trash
+        - mongodb
+        - rabbitmq-ha
+        - wordpress
+        - gcr-cleanup
+      only: []
