@@ -4,8 +4,6 @@ on:
   push:
     branches:
     - master
-    - feat/*
-    - chore/semantic-release
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -37,8 +35,7 @@ jobs:
           dry_run: true
           branches: |
             [
-              'master',
-              'chore/semantic-release'
+              'master'
             ]
           semantic_version: 17.1.1
           extra_plugins: |
@@ -49,11 +46,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-#      - name: Build the Docker image
-#        run: docker build . --file Dockerfile --build-arg KUBECTL_VERSION=${{ matrix.kubectl_version }} --tag germainlefebvre4/ns-killer:v${{ matrix.kubectl_version }}
-#      - name: Publish to Docker Repository
-#        uses: elgohr/Publish-Docker-Github-Action@master
-#        with:
-#          name: germainlefebvre4/ns-killer:v${{ matrix.kubectl_version }}
-#          username: ${{ secrets.DOCKERHUB_USERNAME }}
-#          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+      - name: Build the Docker image
+        run: docker build . --file Dockerfile --build-arg KUBECTL_VERSION=${{ matrix.kubectl_version }} --tag germainlefebvre4/ns-killer:v${{ matrix.kubectl_version }}
+      - name: Publish to Docker Repository
+        uses: elgohr/Publish-Docker-Github-Action@master
+        with:
+          name: germainlefebvre4/ns-killer:v${{ matrix.kubectl_version }}
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
