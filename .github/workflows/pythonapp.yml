@@ -5,6 +5,7 @@ on:
     branches:
     - master
     - feat/*
+    - chore/semantic-release
 jobs:
   build:
     runs-on: ubuntu-latest
