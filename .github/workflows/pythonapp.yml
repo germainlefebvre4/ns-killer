@@ -35,9 +35,11 @@ jobs:
         uses: cycjimmy/semantic-release-action@v2
         with:
           dry_run: true
-          branches:
-            - master
-            - chore/semantic-release
+          branches: |
+            [
+              'master',
+              'chore/semantic-release'
+            ]
           semantic_version: 17.1.1
           extra_plugins: |
             @semantic-release/commit-analyzer@8.0.1
