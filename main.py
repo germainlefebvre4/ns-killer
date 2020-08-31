@@ -25,7 +25,7 @@ time_divider_units = {
     'hours' : 60 * 60,
     'days' : 60 * 60 * 24,
     'weeks' : 60 * 60 * 24 * 7,
-    'months' : 60 * 60 * 24 *30
+    'months' : 60 * 60 * 24 * 30
 }
 
 def delete_ns(ns_name, ns_creationTimestamp_date):
