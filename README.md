@@ -14,6 +14,13 @@ docker run -ti -d --name=ns-killer germainlefebvre4/ns-killer
 kubectl apply -f kubernetes/CronJob
 ```
 
+## Requirements
+Python version needs to be of the following:
+* `3.7`
+* `3.8`
+
+Python versions `3.6` and under are not supported because of interpretation of datetime library.
+
 ## Configuration
 The container has no parameters. Configuration is provided by a file at `/etc/config/ns-killer`.
 
