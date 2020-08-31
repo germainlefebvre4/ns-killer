@@ -4,16 +4,20 @@ on:
   push:
     branches:
     - master
+
 jobs:
   build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         kubectl_version:
-          - 1.16.4
-          - 1.15.7
+          - 1.19.0
+          - 1.18.8
+          - 1.17.11
+          - 1.16.14
+          - 1.15.12
           - 1.14.10
-          - 1.13.13
+          - 1.13.12
     steps:
       - uses: actions/checkout@v1
 
@@ -32,11 +36,7 @@ jobs:
       - name: Semantic Release
         uses: cycjimmy/semantic-release-action@v2
         with:
-          dry_run: true
-          branches: |
-            [
-              'master'
-            ]
+          branches: 'master'
           semantic_version: 17.1.1
           extra_plugins: |
             @semantic-release/commit-analyzer@8.0.1
@@ -47,10 +47,18 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build the Docker image
-        run: docker build . --file Dockerfile --build-arg KUBECTL_VERSION=${{ matrix.kubectl_version }} --tag germainlefebvre4/ns-killer:v${{ matrix.kubectl_version }}
+        run: docker build . --file Dockerfile --build-arg KUBECTL_VERSION=${{ matrix.kubectl_version }} --tag germainlefebvre4/ns-killer:${{ steps.semantic.outputs.new_release_version }}-kubectl-${{ matrix.kubectl_version }}
       - name: Publish to Docker Repository
         uses: elgohr/Publish-Docker-Github-Action@master
         with:
-          name: germainlefebvre4/ns-killer:v${{ matrix.kubectl_version }}
+          name: germainlefebvre4/ns-killer:${{ steps.semantic.outputs.new_release_version }}-kubectl-${{ matrix.kubectl_version }}
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+      - name: Build the Docker image
+        run: docker build . --file Dockerfile --build-arg KUBECTL_VERSION=${{ matrix.kubectl_version }} --tag germainlefebvre4/ns-killer:latest-kubectl-${{ matrix.kubectl_version }}
+      - name: Publish to Docker Repository
+        uses: elgohr/Publish-Docker-Github-Action@master
+        with:
+          name: germainlefebvre4/ns-killer:latest-kubectl-${{ matrix.kubectl_version }}
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
