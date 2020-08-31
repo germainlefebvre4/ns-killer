@@ -35,6 +35,7 @@ jobs:
           '> .releaserc
       - name: Semantic Release
         uses: cycjimmy/semantic-release-action@v2
+        id: semantic
         with:
           branches: 'master'
           semantic_version: 17.1.1
