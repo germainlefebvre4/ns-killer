@@ -1,4 +1,4 @@
-name: Python application
+name: Release development branches
 
 on:
   push:
@@ -10,6 +10,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        kubectl_version:
+          - 1.16.4
     steps:
       - uses: actions/checkout@v1
 
@@ -47,4 +51,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Print semantic version for docker image
-        run: echo '${{ steps.semantic.outputs.new_release_version }}'
+        run: echo 'germainlefebvre4/ns-killer:${{ steps.semantic.outputs.new_release_version }}-kubectl-${{ matrix.kubectl_version }}'

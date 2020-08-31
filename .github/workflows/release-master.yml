@@ -1,4 +1,4 @@
-name: Python application
+name: Release master branch
 
 on:
   push:
