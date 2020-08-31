@@ -3,7 +3,6 @@ name: Release development branches
 on:
   push:
     branches:
-    - master
     - feat/*
     - fix/*
     - chore/*
@@ -36,7 +35,6 @@ jobs:
           dry_run: true
           branches: |
             [
-              'master',
               'feat/*',
               'fix/*',
               'chore/*',
