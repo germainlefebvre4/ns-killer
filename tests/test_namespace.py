@@ -6,29 +6,25 @@ from kopf.testing import KopfRunner
 from myrunner import myRunner
 
 def test_namespace_withoutAnnotation():
-    # with subprocess.run(['pipenv', 'run', 'python', 'main.py'], shell=True, check=True) as runner:
-    with myRunner(['run', 'python', 'main.py']) as runner:
-        try:
-            # Before testing
-            subprocess.run("kubectl apply -f tests/samples/namespace_withoutAnnotation.yaml", shell=True, check=True)
+    try:
+        # Before testing
+        subprocess.run("kubectl apply -f tests/samples/namespace_withoutAnnotation.yaml", shell=True, check=True)
 
-            kubernetes.config.load_kube_config()
-            api = kubernetes.client.CoreV1Api()
-            namespace_response = api.list_namespace()
+        subprocess
 
-            namespace_withoutAnnotation = [{"name": nsa.metadata.name, "metadata": nsa.metadata.annotations} for nsa in namespace_response.items if nsa.metadata.name == "test-without-annotation"]
+        namespace_withoutAnnotation = [{"name": nsa.metadata.name, "metadata": nsa.metadata.annotations} for nsa in namespace_response.items if nsa.metadata.name == "test-without-annotation"]
 
-            for ns in namespace_withoutAnnotation:
-                assert not ns.get('metadata').get('annotations')
-        
-        finally:
-            # After testing
-            subprocess.run("kubectl delete -f tests/samples/namespace_withoutAnnotation.yaml", shell=True, check=True)
+        for ns in namespace_withoutAnnotation:
+            assert not ns.get('metadata').get('annotations')
+    
+    finally:
+        # After testing
+        subprocess.run("kubectl delete -f tests/samples/namespace_withoutAnnotation.yaml", shell=True, check=True)
 
     assert runner.exit_code == 0
     assert runner.exception is None
 
-"""
+
 def test_namespace_withAnnotationInclude():
     with KopfRunner(['run', '--verbose', 'handlers.py']) as runner:
         try:
@@ -92,4 +88,3 @@ def test_namespace_withAnnotationBoth():
 
     assert runner.exit_code == 0
     assert runner.exception is None
-"""
