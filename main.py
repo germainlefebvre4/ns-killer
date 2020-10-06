@@ -5,6 +5,7 @@ import os
 import time
 from ast import literal_eval
 import yaml
+import re
 
 # Load config file
 #with open("config/ns-killer.conf", 'r') as ymlfile:
@@ -45,12 +46,18 @@ for i in k8s_ns.get('items'):
     ns_name = i.get('metadata').get('name')
     ns_creationTimestamp = i.get('metadata').get('creationTimestamp')
     ns_creationTimestamp_date = datetime.strptime(ns_creationTimestamp, "%Y-%m-%dT%H:%M:%S%z")
+    regexp_pattern_matcher= cfg['namespace']['pattern']
 
-    if  len(cfg['namespace']['only']) == 0:
-      # Test if namespace is in exclude list
-      if ns_name not in cfg['namespace']['exclude']:
-          delete_ns(ns_name, ns_creationTimestamp_date)
+    if len(regexp_pattern_matcher) != 0:
+        print("{} | Searching for namespaces matching pattern {}".format(datetime.now(timezone.utc).strftime('%Y-%M-%d %H:%M:%S'), regexp_pattern_matcher))
+        if re.match(regexp_pattern_matcher, ns_name):
+            print("{} | Found namespace named {}".format(datetime.now(timezone.utc).strftime('%Y-%M-%d %H:%M:%S'), ns_name))
+            delete_ns(ns_name, ns_creationTimestamp_date)
+    elif len(cfg['namespace']['only']) == 0:
+        # Test if namespace is in exclude list
+        if ns_name not in cfg['namespace']['exclude']:
+            delete_ns(ns_name, ns_creationTimestamp_date)
     else:
         if ns_name in cfg['namespace']['only']:
-          delete_ns(ns_name, ns_creationTimestamp_date)
+            delete_ns(ns_name, ns_creationTimestamp_date)
 

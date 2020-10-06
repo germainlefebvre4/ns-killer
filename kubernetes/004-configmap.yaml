@@ -21,3 +21,4 @@ data:
         - jenkins
       #only:
       #  - trash
+      #pattern: 'ns-app-dev-*'

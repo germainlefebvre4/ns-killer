@@ -32,6 +32,7 @@ Configuration file is structured as following:
 | config.retention.time | Time data for the frequency loop | (integer) | - | Yes |
 | config.namespace.exclude | List of namespaces to keep | list of (string) | - | Yes |
 | config.namespace.only | List of namespaces to delete. This parameter make the exclude list evicted. | list of (string) | - | Yes |
+| config.namespace.pattern | Regexp pattern for matching namespaces to kill. This parameter override only and exclude | string | - | Yes |
 
 ### Example
 ```yaml
@@ -58,6 +59,7 @@ namespace:
     - wordpress
     - gcr-cleanup
   only: []
+  pattern: 'ns-app-dev-.*'
 ```
 
 ## Where to use this image
