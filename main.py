@@ -50,7 +50,7 @@ def delete_ns(ns_name, ns_creationTimestamp_date):
         print("{} | Killed namespace '{}' that lived for {} {}".format(date_now, ns_name, ns_creation_ago_time, cfg['config']['retention']['kind']))
 
 # Iterate on items
-'''print("Start iterating on namespaces")
+print("Start iterating on namespaces")
 for i in k8s_ns.get('items'):
     ns_name = i.get('metadata').get('name')
     ns_creationTimestamp = i.get('metadata').get('creationTimestamp')
@@ -62,5 +62,3 @@ for i in k8s_ns.get('items'):
     else:
         if ns_name in cfg['namespace']['only']:
           delete_ns(ns_name, ns_creationTimestamp_date)
-          '''
-
