@@ -7,6 +7,8 @@ verify_ssl = true
 
 [packages]
 pyyaml = "*"
+python-dotenv = "*"
+deepmerge = "*"
 
 [requires]
 python_version = "3.7"
