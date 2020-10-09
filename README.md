@@ -1,9 +1,22 @@
 # NS Killer
 
-## What is NS Killer?
+- [What is NS Killer](#mag-what-is-ns-killer)
+- [Requirements](#hammer-requirements)
+- [Getting started](#rocket-getting-started)
+- [Configuration](#triangular_ruler-configuration)
+- [Where to use this image](#question-where-to-use-this-image)
+
+## :mag: What is NS Killer?
 A Kubernetes project to kill all namespace living over X times. Quite useful when auto-generated development environments on the fly and give them a lifecycle out-of-the-box from Kubernetes or even Helm.
 
-## Getting started
+## :hammer: Requirements
+Python version needs to be of the following:
+* `3.7`
+* `3.8`
+
+Python versions `3.6` and under are not supported because of interpretation of datetime library.
+
+## :rocket: Getting started
 ### Docker
 ```bash
 docker run -ti -d --name=ns-killer germainlefebvre4/ns-killer
@@ -14,15 +27,8 @@ docker run -ti -d --name=ns-killer germainlefebvre4/ns-killer
 kubectl apply -f kubernetes/CronJob
 ```
 
-## Requirements
-Python version needs to be of the following:
-* `3.7`
-* `3.8`
-
-Python versions `3.6` and under are not supported because of interpretation of datetime library.
-
-## Configuration
-The container has no parameters. Configuration is provided by a file at `/etc/config/ns-killer`.
+## :triangular_ruler: Configuration
+By default, the container has no parameters. Configuration is provided by a file at `/etc/config/ns-killer`.
 
 Configuration file is structured as following:
 
@@ -33,7 +39,7 @@ Configuration file is structured as following:
 | config.namespace.exclude | List of namespaces to keep | list of (string) | - | Yes |
 | config.namespace.only | List of namespaces to delete. This parameter make the exclude list evicted. | list of (string) | - | Yes |
 
-### Example
+For example :
 ```yaml
 config:
   retention:
@@ -60,7 +66,16 @@ namespace:
   only: []
 ```
 
-## Where to use this image
+But you can too pass configuration with `config` env_var. This configuration, in Json format, will be merged with `ns-killer.conf` content.
+
+For example : 
+```bash
+docker run -ti --env config='{"config":{"retention":{"time":3, "kind": "hours"}}}' -d --name=ns-killer germainlefebvre4/ns-killer
+```
+
+Very usefull if you want test your contribution without re-build docker image.
+
+## :question: Where to use this image
 Let's run this image in a Kubernetes cluster.
 
 Kubernetes manifest are present in directory [kubernetes/](kubernetes).
