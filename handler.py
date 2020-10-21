@@ -15,10 +15,10 @@ kubernetes.config.load_kube_config()
 k8s_api = kubernetes.client.CoreV1Api()
 
 # Load config file
-with open("config/ns-killer.conf", 'r') as ymlfile:
+# with open("config/ns-killer.conf", 'r') as ymlfile:
+#     cfg = yaml.load(ymlfile, Loader=yaml.FullLoader)
+with open("/etc/config/ns-killer.conf", 'r') as ymlfile:
     cfg = yaml.load(ymlfile, Loader=yaml.FullLoader)
-# with open("/etc/config/ns-killer.conf", 'r') as ymlfile:
-    # cfg = yaml.load(ymlfile, Loader=yaml.FullLoader)
 # Fulfill config params with default values
 
 
