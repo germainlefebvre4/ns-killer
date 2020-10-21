@@ -241,6 +241,35 @@
             "kind": "Namespace",
             "metadata": {
                 "annotations": {
+                    "cattle.io/status": "{\"Conditions\":[{\"Type\":\"ResourceQuotaInit\",\"Status\":\"True\",\"Message\":\"\",\"LastUpdateTime\":\"2019-10-22T15:26:09Z\"},{\"Type\":\"InitialRolesPopulated\",\"Status\":\"True\",\"Message\":\"\",\"LastUpdateTime\":\"2019-10-22T15:26:09Z\"}]}",
+                    "lifecycle.cattle.io/create.namespace-auth": "true"
+                },
+                "creationTimestamp": "2019-10-22T15:26:08Z",
+                "finalizers": [
+                    "controller.cattle.io/namespace-auth"
+                ],
+                "labels": {
+                    "name": "do-not-delete-me"
+                },
+                "name": "do-not-delete-me",
+                "resourceVersion": "11572678",
+                "selfLink": "/api/v1/namespaces/do-not-delete-me",
+                "uid": "45775c74-f4e0-11e9-b439-42010a840110"
+            },
+            "spec": {
+                "finalizers": [
+                    "kubernetes"
+                ]
+            },
+            "status": {
+                "phase": "Active"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Namespace",
+            "metadata": {
+                "annotations": {
                     "cattle.io/status": "{\"Conditions\":[{\"Type\":\"ResourceQuotaInit\",\"Status\":\"True\",\"Message\":\"\",\"LastUpdateTime\":\"2019-10-22T14:03:03Z\"},{\"Type\":\"InitialRolesPopulated\",\"Status\":\"True\",\"Message\":\"\",\"LastUpdateTime\":\"2019-10-22T14:03:03Z\"}]}",
                     "lifecycle.cattle.io/create.namespace-auth": "true"
                 },
@@ -489,6 +518,114 @@
                 "name": "watchtower",
                 "resourceVersion": "11798451",
                 "selfLink": "/api/v1/namespaces/watchtower",
+                "uid": "ecbaec47-f570-11e9-bdb2-42010a840140"
+            },
+            "spec": {
+                "finalizers": [
+                    "kubernetes"
+                ]
+            },
+            "status": {
+                "phase": "Active"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Namespace",
+            "metadata": {
+                "annotations": {
+                    "cattle.io/status": "{\"Conditions\":[{\"Type\":\"ResourceQuotaInit\",\"Status\":\"True\",\"Message\":\"\",\"LastUpdateTime\":\"2019-10-23T08:41:37Z\"},{\"Type\":\"InitialRolesPopulated\",\"Status\":\"True\",\"Message\":\"\",\"LastUpdateTime\":\"2019-10-23T08:41:37Z\"}]}",
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"Namespace\",\"metadata\":{\"annotations\":{},\"name\":\"watchtower\"}}\n",
+                    "lifecycle.cattle.io/create.namespace-auth": "true"
+                },
+                "creationTimestamp": "2019-10-23T08:41:36Z",
+                "finalizers": [
+                    "controller.cattle.io/namespace-auth"
+                ],
+                "name": "test-without-annotation",
+                "resourceVersion": "11798451",
+                "selfLink": "/api/v1/namespaces/test-without-annotation",
+                "uid": "ecbaec47-f570-11e9-bdb2-42010a840140"
+            },
+            "spec": {
+                "finalizers": [
+                    "kubernetes"
+                ]
+            },
+            "status": {
+                "phase": "Active"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Namespace",
+            "metadata": {
+                "annotations": {
+                    "cattle.io/status": "{\"Conditions\":[{\"Type\":\"ResourceQuotaInit\",\"Status\":\"True\",\"Message\":\"\",\"LastUpdateTime\":\"2019-10-23T08:41:37Z\"},{\"Type\":\"InitialRolesPopulated\",\"Status\":\"True\",\"Message\":\"\",\"LastUpdateTime\":\"2019-10-23T08:41:37Z\"}]}",
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"Namespace\",\"metadata\":{\"annotations\":{},\"name\":\"watchtower\"}}\n",
+                    "lifecycle.cattle.io/create.namespace-auth": "true"
+                },
+                "creationTimestamp": "2019-10-23T08:41:36Z",
+                "finalizers": [
+                    "controller.cattle.io/namespace-auth"
+                ],
+                "name": "test-with-annotation-both",
+                "resourceVersion": "11798451",
+                "selfLink": "/api/v1/namespaces/test-with-annotation-both",
+                "uid": "ecbaec47-f570-11e9-bdb2-42010a840140"
+            },
+            "spec": {
+                "finalizers": [
+                    "kubernetes"
+                ]
+            },
+            "status": {
+                "phase": "Active"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Namespace",
+            "metadata": {
+                "annotations": {
+                    "cattle.io/status": "{\"Conditions\":[{\"Type\":\"ResourceQuotaInit\",\"Status\":\"True\",\"Message\":\"\",\"LastUpdateTime\":\"2019-10-23T08:41:37Z\"},{\"Type\":\"InitialRolesPopulated\",\"Status\":\"True\",\"Message\":\"\",\"LastUpdateTime\":\"2019-10-23T08:41:37Z\"}]}",
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"Namespace\",\"metadata\":{\"annotations\":{},\"name\":\"watchtower\"}}\n",
+                    "lifecycle.cattle.io/create.namespace-auth": "true"
+                },
+                "creationTimestamp": "2019-10-23T08:41:36Z",
+                "finalizers": [
+                    "controller.cattle.io/namespace-auth"
+                ],
+                "name": "test-with-annotation-exclude",
+                "resourceVersion": "11798451",
+                "selfLink": "/api/v1/namespaces/test-with-annotation-exclude",
+                "uid": "ecbaec47-f570-11e9-bdb2-42010a840140"
+            },
+            "spec": {
+                "finalizers": [
+                    "kubernetes"
+                ]
+            },
+            "status": {
+                "phase": "Active"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Namespace",
+            "metadata": {
+                "annotations": {
+                    "cattle.io/status": "{\"Conditions\":[{\"Type\":\"ResourceQuotaInit\",\"Status\":\"True\",\"Message\":\"\",\"LastUpdateTime\":\"2019-10-23T08:41:37Z\"},{\"Type\":\"InitialRolesPopulated\",\"Status\":\"True\",\"Message\":\"\",\"LastUpdateTime\":\"2019-10-23T08:41:37Z\"}]}",
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"Namespace\",\"metadata\":{\"annotations\":{},\"name\":\"watchtower\"}}\n",
+                    "lifecycle.cattle.io/create.namespace-auth": "true"
+                },
+                "creationTimestamp": "2019-10-23T08:41:36Z",
+                "finalizers": [
+                    "controller.cattle.io/namespace-auth"
+                ],
+                "name": "test-with-annotation-both",
+                "resourceVersion": "11798451",
+                "selfLink": "/api/v1/namespaces/test-with-annotation-both",
                 "uid": "ecbaec47-f570-11e9-bdb2-42010a840140"
             },
             "spec": {

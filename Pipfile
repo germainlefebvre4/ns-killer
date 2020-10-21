@@ -4,9 +4,14 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+pytest = "*"
 
 [packages]
 pyyaml = "*"
+kubernetes = "*"
+#kopf = "*"
+pydash = "*"
+python-dotenv = "*"
 
 [requires]
 python_version = "3.7"

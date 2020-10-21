@@ -5,18 +5,34 @@ import os
 import time
 from ast import literal_eval
 import yaml
+import kubernetes
+
+# Initialize kubernetes api
+kubernetes.config.load_kube_config()
+k8s_api = kubernetes.client.CoreV1Api()
 
 # Load config file
-#with open("config/ns-killer.conf", 'r') as ymlfile:
-with open("/etc/config/ns-killer.conf", 'r') as ymlfile:
+with open("config/ns-killer.conf", 'r') as ymlfile:
     cfg = yaml.load(ymlfile, Loader=yaml.FullLoader)
+# with open("/etc/config/ns-killer.conf", 'r') as ymlfile:
+    # cfg = yaml.load(ymlfile, Loader=yaml.FullLoader)
 # Fulfill config params with default values
 
 # Load cluster namespaces
-#with open('namespaces.json', 'r') as outfile:
-#    k8s_ns = json.load(outfile)
-k8s_ns = literal_eval(os.popen('kubectl get namespaces -o json').read())
-#print(k8s_ns)
+with open('namespaces.json', 'r') as outfile:
+   k8s_ns = json.load(outfile)
+# with open('namespaces.json', 'r') as outfile:
+# k8s_ns = literal_eval(os.popen('kubectl get namespaces -o json').read())
+
+# namespace_response = k8s_api.list_namespace()
+# k8s_ns = [{"metadata": json.dumps(nsa.metadata)} for nsa in namespace_response.items]
+
+
+from kubernetes.client import ApiClient
+api = ApiClient()
+namespace_response = k8s_api.list_namespace()
+namespace_formatted = api.sanitize_for_serialization(namespace_response)
+k8s_ns = [{"metadata": ns.get('metadata')} for ns in namespace_formatted.get('items')]
 
 # Time divider units in dict
 time_divider_units = {
@@ -29,7 +45,7 @@ time_divider_units = {
 
 def delete_ns(ns_name, ns_creationTimestamp_date):
     date_now = datetime.now(timezone.utc).strftime('%Y-%M-%d %H:%M:%S')
-    print(datetime.now(timezone.utc), ns_creationTimestamp_date)
+    # print(datetime.now(timezone.utc), ns_creationTimestamp_date)
     ns_creation_ago = (datetime.now(timezone.utc) - ns_creationTimestamp_date)
     # Define the time unit and calculte the time divider
     time_divider_unit = time_divider_units.get(cfg['config']['retention']['kind'])
@@ -41,7 +57,7 @@ def delete_ns(ns_name, ns_creationTimestamp_date):
 
 # Iterate on items
 print("Start iterating on namespaces")
-for i in k8s_ns.get('items'):
+for i in k8s_ns:
     ns_name = i.get('metadata').get('name')
     ns_creationTimestamp = i.get('metadata').get('creationTimestamp')
     ns_creationTimestamp_date = datetime.strptime(ns_creationTimestamp, "%Y-%m-%dT%H:%M:%S%z")
