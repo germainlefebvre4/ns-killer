@@ -53,23 +53,17 @@ def main():
     
     print("Start iterating on namespaces")
     for ns in namespace_list:
-        # try:
-            ns_name = ns.get('metadata').get('name')
-            ns_creationTimestamp = ns.get('metadata').get('creationTimestamp')
-            ns_creationTimestamp_date = datetime.strptime(ns_creationTimestamp, "%Y-%m-%dT%H:%M:%S%z")
+        ns_name = ns.get('metadata').get('name')
+        ns_creationTimestamp = ns.get('metadata').get('creationTimestamp')
+        ns_creationTimestamp_date = datetime.strptime(ns_creationTimestamp, "%Y-%m-%dT%H:%M:%S%z")
 
-            if has(ns, "metadata.annotations.ns-killer/include") or has(ns, "metadata.annotations.ns-killer/exclude"):
-            # if True:
-                ns_annotation_include = False
-                ns_annotation_exclude = False
-                if has(ns, "metadata.annotations.ns-killer/include"):
-                    ns_annotation_include = ns.get('metadata').get('annotations').get('ns-killer/include')
-                    if ns_annotation_include == "true":
-                        # Test if namespace is in include list
-                        delete_ns(ns_name, ns_creationTimestamp_date)
-
-        # except:
-        #     pass
+        if  len(cfg['namespace']['only']) == 0:
+            # Test if namespace is in exclude list
+            if ns_name not in cfg['namespace']['exclude']:
+                delete_ns(ns_name, ns_creationTimestamp_date)
+        else:
+            if ns_name in cfg['namespace']['only']:
+                delete_ns(ns_name, ns_creationTimestamp_date)
 
 if __name__ == "__main__":
     main()
