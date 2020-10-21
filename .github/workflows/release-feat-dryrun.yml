@@ -35,8 +35,6 @@ jobs:
           dry_run: true
           branches: |
             [
-              '+([0-9])?(.{+([0-9]),x}).x',
-              'master',
               'chore/*',
               'fix/*',
               'feat/*',
