@@ -42,8 +42,8 @@ def delete_ns(ns_name, ns_creationTimestamp_date):
     time_divider_unit = TIME_DIVIDER_UNITS.get(cfg['config']['retention']['kind'])
     ns_creation_ago_time = divmod(ns_creation_ago.days * 86400 + ns_creation_ago.seconds, time_divider_unit)[0]
     if ns_creation_ago_time >= cfg['config']['retention']['time']:
-        #os.system("kubectl delete namespace {}".format(ns_name))
-        print("{} | Killed namespace '{}' that lived for {} {}".format(date_now, ns_name, ns_creation_ago_time, cfg['config']['retention']['kind']))
+        os.system("kubectl delete namespace {}".format(ns_name))
+        # print("{} | Killed namespace '{}' that lived for {} {}".format(date_now, ns_name, ns_creation_ago_time, cfg['config']['retention']['kind']))
 
 def main():
     namespace_response = k8s_api.list_namespace()
