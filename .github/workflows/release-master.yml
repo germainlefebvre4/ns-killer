@@ -3,7 +3,7 @@ name: Release master branch
 on:
   push:
     branches:
-    - master
+      - master
 
 jobs:
   build:
@@ -11,10 +11,10 @@ jobs:
     strategy:
       matrix:
         kubectl_version:
-          - 1.19.0
-          - 1.18.8
-          - 1.17.11
-          - 1.16.14
+          - 1.19.3
+          - 1.18.10
+          - 1.17.13
+          - 1.16.15
           - 1.15.12
           - 1.14.10
           - 1.13.12
@@ -47,19 +47,35 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build the Docker image
-        run: docker build . --file Dockerfile --build-arg KUBECTL_VERSION=${{ matrix.kubectl_version }} --tag germainlefebvre4/ns-killer:${{ steps.semantic.outputs.new_release_version }}-kubectl-${{ matrix.kubectl_version }}
       - name: Publish to Docker Repository
+        if: steps.semantic.outputs.new_release_published == 'true'
         uses: elgohr/Publish-Docker-Github-Action@master
+        env:
+          KUBECTL_VERSION: ${{ matrix.kubectl_version }}
         with:
           name: germainlefebvre4/ns-killer:${{ steps.semantic.outputs.new_release_version }}-kubectl-${{ matrix.kubectl_version }}
+          buildargs: KUBECTL_VERSION
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
-      - name: Build the Docker image
-        run: docker build . --file Dockerfile --build-arg KUBECTL_VERSION=${{ matrix.kubectl_version }} --tag germainlefebvre4/ns-killer:latest-kubectl-${{ matrix.kubectl_version }}
+
       - name: Publish to Docker Repository
+        if: steps.semantic.outputs.new_release_published == 'true'
         uses: elgohr/Publish-Docker-Github-Action@master
+        env:
+          KUBECTL_VERSION: ${{ matrix.kubectl_version }}
         with:
           name: germainlefebvre4/ns-killer:latest-kubectl-${{ matrix.kubectl_version }}
+          buildargs: KUBECTL_VERSION
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+
+      - name: Publish to Docker Repository
+        if: steps.semantic.outputs.new_release_published == 'true'
+        uses: elgohr/Publish-Docker-Github-Action@master
+        env:
+          KUBECTL_VERSION: ${{ matrix.kubectl_version }}
+        with:
+          name: germainlefebvre4/ns-killer:latest
+          buildargs: KUBECTL_VERSION
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
