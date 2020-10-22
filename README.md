@@ -28,7 +28,8 @@ Configuration file is structured as following:
 
 | Attribute | Description | Values | Default | Implemented? |
 |---|---|---|---|---|
-| config.retention.kind | Time unit for the frequency loop | (string) minutes, hours, days, weeks, months | - | Yes |
+| config.dryrun | (string) `enabled` | False | Yes |
+| config.retention.kind | Time unit for the frequency loop | (string) `minutes`, `hours`, `days`, `weeks`, `months` | - | Yes |
 | config.retention.time | Time data for the frequency loop | (integer) | - | Yes |
 | config.namespace.exclude | List of namespaces to keep | list of (string) | - | Yes |
 | config.namespace.only | List of namespaces to delete. This parameter make the exclude list evicted. | list of (string) | - | Yes |
@@ -36,6 +37,7 @@ Configuration file is structured as following:
 ### Example
 ```yaml
 config:
+  dryrun: enabled
   retention:
     kind: hours
     time: 2
