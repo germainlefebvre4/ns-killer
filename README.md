@@ -15,7 +15,7 @@ kubectl apply -f kubernetes/CronJob
 ```
 
 ## Requirements
-Python version needs to be of the following:
+Python version needs to be:
 * `3.7`
 * `3.8`
 
