@@ -53,29 +53,17 @@ jobs:
         env:
           KUBECTL_VERSION: ${{ matrix.kubectl_version }}
         with:
-          name: germainlefebvre4/ns-killer:${{ steps.semantic.outputs.new_release_version }}-kubectl${{ matrix.kubectl_version }}
+          name: germainlefebvre4/ns-killer
           buildargs: KUBECTL_VERSION
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          tags: "${{ steps.semantic.outputs.new_release_version }}-kubectl${{ matrix.kubectl_version }},${{ steps.semantic.outputs.new_release_version }}-${{ matrix.kubectl_version }},latest-kubectl${{ matrix.kubectl_version }},latest-${{ matrix.kubectl_version }},${{ matrix.kubectl_version }}"
 
-      - name: Publish to Docker Repository
-        if: steps.semantic.outputs.new_release_published == 'true'
-        uses: elgohr/Publish-Docker-Github-Action@master
-        env:
-          KUBECTL_VERSION: ${{ matrix.kubectl_version }}
-        with:
-          name: germainlefebvre4/ns-killer:latest-kubectl${{ matrix.kubectl_version }}
-          buildargs: KUBECTL_VERSION
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_PASSWORD }}
-
-      - name: Publish to Docker Repository
-        if: steps.semantic.outputs.new_release_published == 'true'
-        uses: elgohr/Publish-Docker-Github-Action@master
-        env:
-          KUBECTL_VERSION: ${{ matrix.kubectl_version }}
-        with:
-          name: germainlefebvre4/ns-killer:latest
-          buildargs: KUBECTL_VERSION
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          - name: Docker Hub Description
+          uses: peter-evans/dockerhub-description@v2
+          with:
+            repository: germainlefebvre4/ns-killer
+            username: ${{ secrets.DOCKERHUB_USERNAME }}
+            password: ${{ secrets.DOCKERHUB_PASSWORD }}
+            readme-filepath: docs/dockerhub/README.md
+    
