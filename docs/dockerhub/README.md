@@ -1,6 +1,5 @@
 # Supported tags and respective `Dockerfile` links
-* [latest](Dockerfile)
-* `1.0.0-kubectl1.19.3`, `1.0.0-1.19.3`, `1.0.0`, `latest`
+* `1.0.0-kubectl1.19.3`, `1.0.0-1.19.3`, `1.0.0`, [`latest`](Dockerfile)
 * `1.0.0-kubectl1.18.10`, `1.0.0-1.18.10`
 * `1.0.0-kubectl1.17.13`, `1.0.0-1.17.13`
 * `1.0.0-kubectl1.16.15`, `1.0.0-1.16.15`

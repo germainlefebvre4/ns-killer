@@ -1,4 +1,4 @@
-FROM python:3.7-slim-stretch AS base
+FROM python:3.7-alpine AS base
 
 ENV PYROOT /pyroot
 ENV PYTHONUSERBASE $PYROOT
@@ -6,9 +6,8 @@ ENV PYTHONUSERBASE $PYROOT
 
 FROM base as builder
 
-RUN apt update && \
-    apt install -y python-pip && \
-    apt -y clean && \
+RUN apk update && \
+    apk add --no-cache py-pip && \
     pip install pipenv
 
 # Update pipenv libs
@@ -21,12 +20,15 @@ FROM base
 ARG KUBECTL_VERSION=1.14.10
 
 # Kubectl
-RUN apt update && apt install -y curl && \
-    curl -Lo /usr/bin/kubectl https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl && \
+RUN apk update && \
+    apk add curl && \
+    curl -Lo /tmp/kubernetes-client-linux-amd64.tar.gz https://dl.k8s.io/v${KUBECTL_VERSION}/kubernetes-client-linux-amd64.tar.gz && \
+    tar -zxvf /tmp/kubernetes-client-linux-amd64.tar.gz -C /tmp && \
+    mv /tmp/kubernetes/client/bin/kubectl /usr/bin/kubectl && \
     chmod +x /usr/bin/kubectl
 
 # Python libs and sources
 COPY --from=builder $PYROOT/lib/ $PYROOT/lib/
-COPY main.py .
+COPY . .
 
-CMD ["python", "main.py"]
+CMD ["python", "handler.py"]
