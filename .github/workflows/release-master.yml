@@ -59,11 +59,11 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
           tags: "${{ steps.semantic.outputs.new_release_version }}-kubectl${{ matrix.kubectl_version }},${{ steps.semantic.outputs.new_release_version }}-${{ matrix.kubectl_version }},latest-kubectl${{ matrix.kubectl_version }},latest-${{ matrix.kubectl_version }},${{ matrix.kubectl_version }}"
 
-        - name: Docker Hub Description
-          uses: peter-evans/dockerhub-description@v2
-          with:
-            repository: germainlefebvre4/ns-killer
-            username: ${{ secrets.DOCKERHUB_USERNAME }}
-            password: ${{ secrets.DOCKERHUB_PASSWORD }}
-            readme-filepath: docs/dockerhub/README.md
+      - name: Docker Hub Description
+        uses: peter-evans/dockerhub-description@v2
+        with:
+          repository: germainlefebvre4/ns-killer
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          readme-filepath: docs/dockerhub/README.md
     
