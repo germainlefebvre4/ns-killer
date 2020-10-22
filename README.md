@@ -9,6 +9,8 @@ A Kubernetes project to kill all namespace living over X times. Quite useful whe
 docker run -ti -d --name=ns-killer germainlefebvre4/ns-killer
 ```
 
+Docker image is avaiblable on [Docker Hub](https://hub.docker.com/r/germainlefebvre4/ns-killer).
+
 ### Kubernetes
 ```bash
 kubectl apply -f kubernetes/CronJob

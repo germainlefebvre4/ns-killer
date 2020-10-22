@@ -53,7 +53,7 @@ jobs:
         env:
           KUBECTL_VERSION: ${{ matrix.kubectl_version }}
         with:
-          name: germainlefebvre4/ns-killer:${{ steps.semantic.outputs.new_release_version }}-kubectl-${{ matrix.kubectl_version }}
+          name: germainlefebvre4/ns-killer:${{ steps.semantic.outputs.new_release_version }}-kubectl${{ matrix.kubectl_version }}
           buildargs: KUBECTL_VERSION
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
@@ -64,7 +64,7 @@ jobs:
         env:
           KUBECTL_VERSION: ${{ matrix.kubectl_version }}
         with:
-          name: germainlefebvre4/ns-killer:latest-kubectl-${{ matrix.kubectl_version }}
+          name: germainlefebvre4/ns-killer:latest-kubectl${{ matrix.kubectl_version }}
           buildargs: KUBECTL_VERSION
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
