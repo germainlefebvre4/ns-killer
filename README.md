@@ -67,4 +67,4 @@ namespace:
 ## Where to use this image
 Let's run this image in a Kubernetes cluster.
 
-Kubernetes manifest are present in directory [kubernetes/](kubernetes).
+Kubernetes manifest are present in directory [kubernetes/](https://github.com/germainlefebvre4/ns-killer/tree/master/kuberneteskubernetes).
