@@ -15,10 +15,10 @@ kubernetes.config.load_kube_config()
 k8s_api = kubernetes.client.CoreV1Api()
 
 # Load config file
-# with open("config/ns-killer.conf", 'r') as ymlfile:
-#     cfg = yaml.load(ymlfile, Loader=yaml.FullLoader)
-with open("/etc/config/ns-killer.conf", 'r') as ymlfile:
+with open("config/ns-killer.conf", 'r') as ymlfile:
     cfg = yaml.load(ymlfile, Loader=yaml.FullLoader)
+# with open("/etc/config/ns-killer.conf", 'r') as ymlfile:
+#     cfg = yaml.load(ymlfile, Loader=yaml.FullLoader)
 # Fulfill config params with default values
 
 
@@ -34,24 +34,33 @@ TIME_DIVIDER_UNITS = {
     'months': 60 * 60 * 24 * 30
 }
 
+if "dryrun" in cfg['config']:
+    DRYRUN = True if cfg['config']['dryrun'] == "enabled" else False
+else:
+    DRYRUN = False
+
 
 def delete_ns(ns_name, ns_creationTimestamp_date):
     date_now = datetime.now(timezone.utc).strftime('%Y-%M-%d %H:%M:%S')
     ns_creation_ago = (datetime.now(timezone.utc) - ns_creationTimestamp_date)
+
     # Define the time unit and calculte the time divider
     time_divider_unit = TIME_DIVIDER_UNITS.get(cfg['config']['retention']['kind'])
     ns_creation_ago_time = divmod(ns_creation_ago.days * 86400 + ns_creation_ago.seconds, time_divider_unit)[0]
+    config_retention_kind = cfg['config']['retention']['kind']
     if ns_creation_ago_time >= cfg['config']['retention']['time']:
-        os.system("kubectl delete namespace {}".format(ns_name))
-        # print("{} | Killed namespace '{}' that lived for {} {}".format(date_now, ns_name, ns_creation_ago_time, cfg['config']['retention']['kind']))
+        print(f"{date_now} | Killed namespace '{ns_name}' that lived for {ns_creation_ago_time} {config_retention_kind}")
+        if not DRYRUN:
+            os.system("kubectl delete namespace {}".format(ns_name))
 
 def main():
     namespace_response = k8s_api.list_namespace()
     namespace_formatted = api.sanitize_for_serialization(namespace_response)
     namespace_list = [{"metadata": ns.get('metadata')} for ns in namespace_formatted.get('items') if ns.get('metadata').get('name') not in NAMESPACE_EXCLUDE]
-
     
+    print(f"Dryrun mode: {DRYRUN}")
     print("Start iterating on namespaces")
+
     for ns in namespace_list:
         ns_name = ns.get('metadata').get('name')
         ns_creationTimestamp = ns.get('metadata').get('creationTimestamp')

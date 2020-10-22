@@ -9,13 +9,15 @@ A Kubernetes project to kill all namespace living over X times. Quite useful whe
 docker run -ti -d --name=ns-killer germainlefebvre4/ns-killer
 ```
 
+Docker image is avaiblable on [Docker Hub](https://hub.docker.com/r/germainlefebvre4/ns-killer).
+
 ### Kubernetes
 ```bash
 kubectl apply -f kubernetes/CronJob
 ```
 
 ## Requirements
-Python version needs to be of the following:
+Python version needs to be:
 * `3.7`
 * `3.8`
 
@@ -28,7 +30,8 @@ Configuration file is structured as following:
 
 | Attribute | Description | Values | Default | Implemented? |
 |---|---|---|---|---|
-| config.retention.kind | Time unit for the frequency loop | (string) minutes, hours, days, weeks, months | - | Yes |
+| config.dryrun | Enable the dryrun mode | (string) `enabled` | False | Yes |
+| config.retention.kind | Time unit for the frequency loop | (string) `minutes`, `hours`, `days`, `weeks`, `months` | - | Yes |
 | config.retention.time | Time data for the frequency loop | (integer) | - | Yes |
 | config.namespace.exclude | List of namespaces to keep | list of (string) | - | Yes |
 | config.namespace.only | List of namespaces to delete. This parameter make the exclude list evicted. | list of (string) | - | Yes |
@@ -36,6 +39,7 @@ Configuration file is structured as following:
 ### Example
 ```yaml
 config:
+  dryrun: enabled
   retention:
     kind: hours
     time: 2
@@ -63,4 +67,4 @@ namespace:
 ## Where to use this image
 Let's run this image in a Kubernetes cluster.
 
-Kubernetes manifest are present in directory [kubernetes/](kubernetes).
+Kubernetes manifest are present in directory [kubernetes/](https://github.com/germainlefebvre4/ns-killer/tree/master/kuberneteskubernetes).

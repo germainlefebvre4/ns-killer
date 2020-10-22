@@ -1,5 +1,12 @@
 # Supported tags and respective `Dockerfile` links
 * [latest](Dockerfile)
+* `1.0.0-kubectl1.19.3`, `1.0.0-1.19.3`, `1.0.0`, `latest`
+* `1.0.0-kubectl1.18.10`, `1.0.0-1.18.10`
+* `1.0.0-kubectl1.17.13`, `1.0.0-1.17.13`
+* `1.0.0-kubectl1.16.15`, `1.0.0-1.16.15`
+* `1.0.0-kubectl1.15.12`, `1.0.0-1.15.12`
+* `1.0.0-kubectl1.14.10`, `1.0.0-1.14.10`
+* `1.0.0-kubectl1.13.12`, `1.0.0-1.13.12`
 
 # Quick reference
 * **Where to get help:**
@@ -38,7 +45,8 @@ Configuration file is structured as following:
 
 | Attribute | Description | Values | Default | Implemented? |
 |---|---|---|---|---|
-| config.retention.kind | Time unit for the frequency loop | (string) minutes, hours, days, weeks, months | - | Yes |
+| config.dryrun | Enable the dryrun mode | (string) `enabled` | False | Yes |
+| config.retention.kind | Time unit for the frequency loop | (string) `minutes`, `hours`, `days`, `weeks`, `months` | - | Yes |
 | config.retention.time | Time data for the frequency loop | (integer) | - | Yes |
 | config.namespace.exclude | List of namespaces to keep | list of (string) | - | Yes |
 | config.namespace.only | List of namespaces to delete. This parameter make the exclude list evicted. | list of (string) | - | Yes |
@@ -46,6 +54,7 @@ Configuration file is structured as following:
 ## Example
 ```yaml
 config:
+  dryrun: enabled
   retention:
     kind: hours
     time: 2
