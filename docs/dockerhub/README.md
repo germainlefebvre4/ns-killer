@@ -1,11 +1,24 @@
 # Supported tags and respective `Dockerfile` links
-* `1.0.0-kubectl1.19.3`, `1.0.0-1.19.3`, `1.0.0`, [`latest`](Dockerfile)
+
+Release `1.1.0`:
+* `1.1.0-kubectl1.19.3`, `1.1.0-1.19.3`, `latest-kubectl1.19.3`, `latest-1.19.3`
+* `1.1.0-kubectl1.18.10`, `1.1.0-1.18.10`, `latest-kubectl1.18.10`, `latest-1.18.10`
+* `1.1.0-kubectl1.17.13`, `1.1.0-1.17.13`, `latest-kubectl1.17.13`, `latest-1.17.13`
+* `1.1.0-kubectl1.16.15`, `1.1.0-1.16.15`, `latest-kubectl1.16.15`, `latest-1.16.15`
+* `1.1.0-kubectl1.15.12`, `1.1.0-1.15.12`, `latest-kubectl1.15.12`, `latest-1.15.12`
+* `1.1.0-kubectl1.14.10`, `1.1.0-1.14.10`, `latest-kubectl1.14.10`, `latest-1.14.10`
+* `1.1.0-kubectl1.13.12`, `1.1.0-1.13.12`, `latest-kubectl1.13.12`, `latest-1.13.12`
+
+Release `1.0.0`:
+* `1.0.0-kubectl1.19.3`, `1.0.0-1.19.3`
 * `1.0.0-kubectl1.18.10`, `1.0.0-1.18.10`
 * `1.0.0-kubectl1.17.13`, `1.0.0-1.17.13`
 * `1.0.0-kubectl1.16.15`, `1.0.0-1.16.15`
 * `1.0.0-kubectl1.15.12`, `1.0.0-1.15.12`
 * `1.0.0-kubectl1.14.10`, `1.0.0-1.14.10`
 * `1.0.0-kubectl1.13.12`, `1.0.0-1.13.12`
+
+Etc...
 
 # Quick reference
 * **Where to get help:**
