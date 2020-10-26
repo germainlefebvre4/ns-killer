@@ -32,7 +32,7 @@ jobs:
           buildargs: KUBECTL_VERSION
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
-          tags: "${{ github.event.inputs.release }}-kubectl${{ matrix.kubectl_version }},${{ github.event.inputs.release }}-${{ matrix.kubectl_version }},latest-kubectl${{ matrix.kubectl_version }},latest-${{ matrix.kubectl_version }},${{ matrix.kubectl_version }}"
+          tags: "latest-${{ matrix.kubectl_version }},latest-kubectl${{ matrix.kubectl_version }},${{ github.event.inputs.release }}-${{ matrix.kubectl_version }},${{ github.event.inputs.release }}-kubectl${{ matrix.kubectl_version }}"
 
       - name: Docker Hub Description
         uses: peter-evans/dockerhub-description@v2
