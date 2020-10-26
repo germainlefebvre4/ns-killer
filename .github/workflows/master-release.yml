@@ -39,6 +39,7 @@ jobs:
 
       - name: Workflow Dispatch
         uses: benc-uk/workflow-dispatch@v1.1
+        if: steps.semantic.outputs.new_release_published == 'true'
         with:
           workflow: Build and publish Docker images
           token: ${{ secrets.PERSONAL_TOKEN }}
