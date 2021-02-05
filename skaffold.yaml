@@ -1,0 +1,22 @@
+apiVersion: skaffold/v2beta11
+kind: Config
+metadata:
+  name: ns-killer
+build:
+  local:
+    useBuildkit: true
+  artifacts:
+    - image: ns-killer
+      # context: .
+      sync:
+        infer:
+          - '*.py'
+      docker:
+        dockerfile: Dockerfile
+        # noCache: true
+        buildArgs:
+          KUBECTL_VERSION: 1.16.15
+deploy:
+  kubectl:
+    manifests:
+    - skaffold/kubernetes/*.yaml
