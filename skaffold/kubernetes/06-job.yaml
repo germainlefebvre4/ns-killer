@@ -1,0 +1,30 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: ns-killer
+  # namespace: ns-killer
+spec:
+  backoffLimit: 3
+  template:
+    spec:
+      serviceAccountName: ns-killer
+      restartPolicy: Never
+      containers:
+        - name: ns-killer
+          image: ns-killer
+          # imagePullPolicy: Always
+          # stdin: true
+          # tty: true
+          resources:
+            requests:
+              cpu: 10m
+              memory: 16Mi
+          volumeMounts:
+            - name: config
+              mountPath: /etc/config
+      volumes:
+        - name: config
+          configMap:
+            name: ns-killer
+      restartPolicy: Never
+  backoffLimit: 4

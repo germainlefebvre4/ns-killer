@@ -4,6 +4,7 @@ import time
 from kubernetes import client
 import handler
 
+
 def test_namespace_withoutAnnotation():
     try:
         # Before testing

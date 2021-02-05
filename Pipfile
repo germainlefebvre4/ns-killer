@@ -5,11 +5,13 @@ verify_ssl = true
 
 [dev-packages]
 pytest = "*"
+pylint = "*"
+flake8 = "*"
+bandit = "*"
 
 [packages]
 pyyaml = "*"
 kubernetes = "*"
-pydash = "*"
 python-dotenv = "*"
 
 [requires]
